@@ -1,0 +1,36 @@
+.Login {
+  width: 18%;
+  padding: 1.2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  height: 250px;
+}
+
+.Login input,
+.Login button {
+  border: 0;
+  outline: 0;
+  border-radius: 7px;
+  width: 100%;
+  font-size: 0.8em;
+}
+
+.Login input {
+  padding: 1em;
+}
+
+.Login button {
+  background-color: #6441A5;
+  padding: 1.2em 1.6rem;
+  color: white;
+  text-transform: uppercase;
+  cursor: pointer;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+  transition: box-shadow 0.3s ease-in-out;
+}
+
+.Login button:hover {
+  box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+}
