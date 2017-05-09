@@ -9,7 +9,8 @@
   "scripts": {
     "watch": "nodemon server.js --ignore public/ --exec babel-node",
     "assets": "webpack -w --display-max-modules 0",
-    "start": "concurrently 'npm run watch' 'npm run assets' --names '💻,📦' --prefix name"
+    "start": "concurrently 'npm run watch' 'npm run assets' --names '💻,📦' --prefix name",
+    "build": "webpack -p"
   },
   "dependencies": {
     "autoprefixer": "^6.7.7",
