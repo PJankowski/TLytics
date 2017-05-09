@@ -4,6 +4,9 @@ import { connect } from 'react-redux';
 
 import loginAction from '../../actions/AuthActions';
 
+import Button from '../Button';
+import Container from '../../containers/Container';
+
 import './Login.css';
 
 class Login extends Component {
@@ -34,12 +37,14 @@ class Login extends Component {
 
   render() {
     return (
-      <form className="Login" onSubmit={this.login}>
-        <h1>Login</h1>
-        <input type="text" placeholder="Username:" ref={(ref) => { this.usernameRef = ref; }} />
-        <input type="password" placeholder="Password:" ref={(ref) => { this.passwordRef = ref; }} />
-        <button type="submit">Login</button>
-      </form>
+      <Container centered>
+        <form className="Login" onSubmit={this.login}>
+          <h1>Login</h1>
+          <input type="text" placeholder="Username:" ref={(ref) => { this.usernameRef = ref; }} />
+          <input type="password" placeholder="Password:" ref={(ref) => { this.passwordRef = ref; }} />
+          <Button text="Submit" />
+        </form>
+      </Container>
     );
   }
 }
