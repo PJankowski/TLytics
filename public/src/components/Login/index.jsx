@@ -6,7 +6,6 @@ import loginAction from '../../actions/AuthActions';
 import './Login.css';
 
 @connect(store => store)
-
 class Login extends Component {
   constructor(props) {
     super(props);
@@ -34,9 +33,6 @@ class Login extends Component {
     return (
       <form className="Login" onSubmit={this.login}>
         <h1>Login</h1>
-        {
-          this.props.error.active ? <p>{this.props.error.message}</p> : null
-        }
         <input type="text" placeholder="Username:" ref={(ref) => {this.usernameRef = ref;}} />
         <input type="password" placeholder="Password:" ref={(ref) => {this.passwordRef = ref;}} />
         <button type="submit">Login</button>
