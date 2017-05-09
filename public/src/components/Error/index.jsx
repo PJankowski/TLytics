@@ -1,17 +1,25 @@
-import React, { Component } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
 import './Error.css';
 
-@connect(store => store)
-class Error extends Component {
-  render() {
-    return (
-      <div className="Error">
-        <p>{this.props.error.message}</p>
-      </div>
-    )
-  }
+function Error({ error }) {
+  return (
+    <div className="Error">
+      <p>{error.message}</p>
+    </div>
+  );
 }
 
-export default Error;
+Error.propTypes = {
+  error: PropTypes.object,
+};
+
+Error.defaultProps = {
+  error: {},
+};
+
+const mapStateToProps = state => state;
+
+export default connect(mapStateToProps)(Error);

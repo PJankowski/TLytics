@@ -6,5 +6,5 @@ import error from './errorReducer';
 export default combineReducers({
   user,
   error,
-  router: routerReducer
+  router: routerReducer,
 });

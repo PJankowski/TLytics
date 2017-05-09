@@ -1,0 +1,25 @@
+{
+  "env": {
+    "browser": true,
+    "node": true
+  },
+  "globals": {
+    "document": true
+  },
+  "parser": "babel-eslint",
+  "parserOptions": {
+    "ecmaFeatures": {
+      "jsx": true
+    }
+  },
+  "rules": {
+    "import/extensions": "off",
+    "no-underscore-dangle": "off",
+    "arrow-body-style": "off",
+    "react/forbid-prop-types": 0,
+    "global-require": 0,
+    "no-param-reassign": ["error", { "props": false }],
+    "jsx-a11y/img-has-alt": "off"
+  },
+  "extends": "airbnb"
+}

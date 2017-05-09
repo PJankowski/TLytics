@@ -1,4 +1,5 @@
-import React, { Component } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import { Route } from 'react-router-dom';
 import { connect } from 'react-redux';
 
@@ -9,17 +10,26 @@ import Dashboard from '../Dashboard';
 
 import './App.css';
 
-@connect(store => store)
-class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        { this.props.error.active ? <Error /> : null }
-        <Route path="/login" component={Login} />
-        <Route path="/dashboard" component={Dashboard} />
-      </div>
-    )
-  }
+function App({ error }) {
+  return (
+    <div className="App">
+      { error.active ? <Error /> : null }
+      <Route path="/login" component={Login} />
+      <Route path="/dashboard" component={Dashboard} />
+    </div>
+  );
 }
 
-export default App;
+App.propTypes = {
+  error: PropTypes.object,
+};
+
+App.defaultProps = {
+  error: {},
+};
+
+const mapStateToProps = (state) => {
+  return state;
+};
+
+export default connect(mapStateToProps)(App);

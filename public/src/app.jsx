@@ -1,15 +1,12 @@
 import React from 'react';
 import ReactDom from 'react-dom';
 import { Provider } from 'react-redux';
-import { Route, IndexRedirect } from 'react-router-dom';
-import createHistory from 'history/createBrowserHistory';
+import { Route } from 'react-router-dom';
 import { ConnectedRouter } from 'react-router-redux';
 
-import store from './store';
+import store, { history } from './store';
 
 import App from './containers/App';
-
-const history = createHistory();
 
 ReactDom.render(
   <Provider store={store}>
