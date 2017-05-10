@@ -1,10 +1,13 @@
 # TLytics
 
 ### Todo:
-* Create smaller components (form, input)
+* Create smaller components (form, input) ✔︎
 * Rename Error to Toast
 * Style Toasts out better
 * Create navigatin bar
+
+### Changelog:
+* Added OAuth
 
 #### NPM Scripts:
 ```json
