@@ -1,16 +1,14 @@
 export default function user(state = {
-  id: '',
-  username: '',
-  token: '',
+  display_name: '',
+  accessToken: '',
 }, action) {
   switch (action.type) {
     case 'USER_LOGGED_IN': {
-      const { _id, username, token } = action.payload;
+      const { display_name, accessToken } = action.payload;
       return {
         ...state,
-        id: _id,
-        username,
-        token,
+        display_name,
+        accessToken,
       };
     }
 

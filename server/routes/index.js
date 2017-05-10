@@ -1,10 +1,18 @@
-import {signup, login} from '../controllers/UserController';
+import Passport from 'passport';
 
-export default function(app) {
-  app.post('/signup', signup);
-  app.post('/login', login)
+import getUser from '../controllers/UserController';
+
+export default function (app) {
+  app.get('/twitch', Passport.authenticate('twitch', { scope: 'user_read' }));
+  app.get('/twitch/callback', Passport.authenticate('twitch', { successRedirect: '/dashboard', failureRedirect: '/' }));
+
+  app.get('/user', getUser);
+
+  app.get('/', (req, res) => {
+    res.render('index');
+  });
 
   app.get('/*', (req, res) => {
-    res.render('index');
+    res.render('app');
   });
 }

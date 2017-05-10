@@ -17,7 +17,7 @@ function Container({ children, centered }) {
 }
 
 Container.propTypes = {
-  children: PropTypes.object.isRequired,
+  children: PropTypes.any.isRequired,
   centered: PropTypes.bool,
 };
 

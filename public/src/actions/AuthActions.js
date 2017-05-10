@@ -32,3 +32,15 @@ export default function loginAction(user) {
       });
   };
 }
+
+export function oAuthLogin() {
+  return () => {
+    return axios.get('/twitch')
+      .then((data) => {
+        console.log(data.data);
+      })
+      .catch((err) => {
+        console.log(err.response.data);
+      });
+  };
+}

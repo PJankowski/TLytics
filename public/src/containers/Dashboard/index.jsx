@@ -1,18 +1,17 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import getUser from '../../actions/UserActions';
 
 class Dashboard extends Component {
   componentDidMount() {
-    if (this.props.user.token === '') {
-      this.props.history.push('/login');
-    }
+    this.props.dispatch(getUser());
   }
 
   render() {
     return (
       <div>
-        <h1>Dashboard</h1>
+        <h1>Welcome { this.props.user.display_name }!</h1>
       </div>
     );
   }
@@ -20,12 +19,12 @@ class Dashboard extends Component {
 
 Dashboard.propTypes = {
   user: PropTypes.object,
-  history: PropTypes.object,
+  dispatch: PropTypes.func,
 };
 
 Dashboard.defaultProps = {
   user: {},
-  history: {},
+  dispatch: () => {},
 };
 
 const mapStateToProps = (state) => {

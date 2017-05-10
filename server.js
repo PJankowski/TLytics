@@ -6,9 +6,16 @@ import morgan from 'morgan';
 import MongoStore from 'connect-mongo';
 import session from 'express-session';
 import cookieParser from 'cookie-parser';
-import config from './server/config';
-import routes from './server/routes';
+import passport from 'passport';
+import cors from 'cors';
+
 const app = express();
+
+/* eslint-disable import/first */
+import config from './server/config';
+import passportSetup from './server/utils/passport';
+import routes from './server/routes';
+/* eslint-enable import/first */
 
 mongoose.Promise = global.Promise;
 
@@ -21,8 +28,9 @@ mongoose.connect(config.db, (err) => {
 });
 
 const Store = MongoStore(session);
-const SessionStore = new Store({mongooseConnection: mongoose.connection});
+const SessionStore = new Store({ mongooseConnection: mongoose.connection });
 
+app.use(cors());
 app.use(express.static(path.join(__dirname, 'public')));
 app.set('views', path.join(__dirname, './server/views'));
 app.use(bodyParser.json());
@@ -33,9 +41,13 @@ app.use(session({
   secret: config.sessionSecret,
   resave: false,
   saveUninitialized: false,
-  store: SessionStore
+  store: SessionStore,
 }));
+app.use(passport.initialize());
+app.use(passport.session());
 app.set('view engine', 'pug');
+
+passportSetup();
 
 routes(app);
 

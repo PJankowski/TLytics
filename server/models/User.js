@@ -3,26 +3,26 @@ import bcrypt from 'bcrypt';
 
 mongoose.Promise = global.Promise;
 
-let UserSchema = mongoose.Schema({
-  username: {type: String, unique: true, required: 'Please enter a valid Username.'},
-  password: String
+const UserSchema = mongoose.Schema({
+  username: { type: String, unique: true, required: 'Please enter a valid Username.' },
+  password: String,
 });
 
-UserSchema.pre('save', function(next) {
-  var user = this;
-  if (!user.isModified('password')) return next();
+UserSchema.pre('save', function hashBeforeSave(next) {
+  const user = this;
+  if (!user.isModified('password')) next();
 
   bcrypt.genSalt(10, (err, salt) => {
-    if (err) return next(err);
+    if (err) next(err);
 
-    bcrypt.hash(user.password, salt, (err, hash) => {
+    bcrypt.hash(user.password, salt, (_, hash) => {
       user.password = hash;
       next();
     });
   });
 });
 
-UserSchema.methods.comparePassword = function(password) {  
+UserSchema.methods.comparePassword = function checkPassword(password) {
   return bcrypt.compare(password, this.password);
 };
 
