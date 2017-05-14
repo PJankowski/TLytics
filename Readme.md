@@ -2,12 +2,14 @@
 
 ### Todo:
 * Create smaller components (form, input) ✔︎
-* Rename Error to Toast
+* Rename Error to Toast ✔︎
 * Style Toasts out better
 * Create navigatin bar
 
 ### Changelog:
 * Added OAuth
+* Created Charts class
+* Changed Error to Toast for more general usage
 
 #### NPM Scripts:
 ```json
