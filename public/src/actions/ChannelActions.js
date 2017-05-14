@@ -1,8 +1,7 @@
-import api from '../utils/api';
 import { CHANNEL_GET } from '../utils/constants';
 
 export default function getChannel() {
-  return (dispatch) => {
+  return (dispatch, _, api) => {
     return api.getChannel()
       .then((data) => {
         const {
