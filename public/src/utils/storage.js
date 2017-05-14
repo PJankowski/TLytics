@@ -1,16 +1,17 @@
-const localStorage = window.localStorage;
-
 class Storage {
-  static set(key, value) {
-    localStorage.setItem(key, value);
+  constructor() {
+    this.localStorage = window.localStorage;
+  }
+  set(key, value) {
+    this.localStorage.setItem(key, value);
   }
 
-  static get(key) {
-    return localStorage.getItem(key);
+  get(key) {
+    return this.localStorage.getItem(key);
   }
 
-  static remove(key) {
-    localStorage.removeItem(key);
+  remove(key) {
+    this.localStorage.removeItem(key);
   }
 }
 

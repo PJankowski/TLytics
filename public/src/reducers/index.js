@@ -1,10 +1,10 @@
 import { combineReducers } from 'redux';
 import { routerReducer } from 'react-router-redux';
 import user from './userReducer';
-import error from './errorReducer';
+import toast from './toastReducer';
 
 export default combineReducers({
   user,
-  error,
+  toast,
   router: routerReducer,
 });

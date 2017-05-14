@@ -3,3 +3,8 @@
   width: 100vw;
   background: #F0F2F3;
 }
+
+#chart {
+  background: #fff;
+  margin: 1em auto;
+}

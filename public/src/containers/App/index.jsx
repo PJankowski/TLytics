@@ -9,25 +9,27 @@ import Dashboard from '../Dashboard';
 
 import './App.css';
 
-function App({ error }) {
+function App({ toast }) {
   return (
     <div className="App">
-      { error.active ? <Toast /> : null }
+      { toast.active ? <Toast /> : null }
       <Route path="/dashboard" component={Dashboard} />
     </div>
   );
 }
 
 App.propTypes = {
-  error: PropTypes.object,
+  toast: PropTypes.object,
 };
 
 App.defaultProps = {
-  error: {},
+  toast: {},
 };
 
 const mapStateToProps = (state) => {
-  return state;
+  return {
+    toast: state.toast,
+  };
 };
 
 export default connect(mapStateToProps)(App);

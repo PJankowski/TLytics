@@ -6,8 +6,9 @@ export default function getUser() {
     return axios.get('/user')
       .then((data) => {
         const { display_name, accessToken, refreshToken } = data.data;
+        const storage = new Storage();
 
-        Storage.set('tlytics_token', refreshToken);
+        storage.set('tlytics_token', refreshToken);
 
         dispatch({ type: 'USER_LOGGED_IN',
           payload: {

@@ -7,6 +7,7 @@ import './Toast.css';
 function Toast({ toast }) {
   return (
     <div className="Toast">
+      <h1>{toast.type}</h1>
       <p>{toast.message}</p>
     </div>
   );
@@ -24,7 +25,7 @@ Toast.defaultProps = {
 
 const mapStateToProps = (state) => {
   return {
-    error: state.error,
+    toast: state.toast,
   };
 };
 

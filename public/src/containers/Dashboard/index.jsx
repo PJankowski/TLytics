@@ -1,17 +1,20 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import getUser from '../../actions/UserActions';
 
 class Dashboard extends Component {
   componentDidMount() {
-    this.props.dispatch(getUser());
+    this.props.dispatch(this.props.getUser());
   }
 
   render() {
+    const { user } = this.props;
     return (
       <div>
-        <h1>Welcome { this.props.user.display_name }!</h1>
+        <h1>Welcome { user.display_name }!</h1>
+        <div id="chart" />
       </div>
     );
   }
@@ -20,15 +23,23 @@ class Dashboard extends Component {
 Dashboard.propTypes = {
   user: PropTypes.object,
   dispatch: PropTypes.func,
+  getUser: PropTypes.func,
 };
 
 Dashboard.defaultProps = {
   user: {},
   dispatch: () => {},
+  getUser: () => {},
 };
 
 const mapStateToProps = (state) => {
-  return state;
+  return {
+    user: state.user,
+  };
 };
 
-export default connect(mapStateToProps)(Dashboard);
+const mapDispatchToProps = (dispatch) => {
+  return bindActionCreators({ getUser }, dispatch);
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Dashboard);
