@@ -1,30 +1,23 @@
 import mongoose from 'mongoose';
-import bcrypt from 'bcrypt';
-
-mongoose.Promise = global.Promise;
 
 const UserSchema = mongoose.Schema({
-  username: { type: String, unique: true, required: 'Please enter a valid Username.' },
-  password: String,
+  user_id: 44322889,
+  bio: String,
+  created_at: Date,
+  display_name: String,
+  email: String,
+  email_verified: Boolean,
+  logo: String,
+  name: String,
+  notifications: {
+    email: Boolean,
+    push: Boolean,
+  },
+  partnered: Boolean,
+  twitter_connected: Boolean,
+  type: String,
+  updated_at: { type: Date, default: Date.now() },
 });
-
-UserSchema.pre('save', function hashBeforeSave(next) {
-  const user = this;
-  if (!user.isModified('password')) next();
-
-  bcrypt.genSalt(10, (err, salt) => {
-    if (err) next(err);
-
-    bcrypt.hash(user.password, salt, (_, hash) => {
-      user.password = hash;
-      next();
-    });
-  });
-});
-
-UserSchema.methods.comparePassword = function checkPassword(password) {
-  return bcrypt.compare(password, this.password);
-};
 
 const User = mongoose.model('User', UserSchema);
 

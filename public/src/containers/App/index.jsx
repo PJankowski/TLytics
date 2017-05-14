@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { Route } from 'react-router';
 import { connect } from 'react-redux';
 
-import Error from '../../components/Error';
+import Toast from '../../components/Toast';
 
 import Dashboard from '../Dashboard';
 
@@ -12,7 +12,7 @@ import './App.css';
 function App({ error }) {
   return (
     <div className="App">
-      { error.active ? <Error /> : null }
+      { error.active ? <Toast /> : null }
       <Route path="/dashboard" component={Dashboard} />
     </div>
   );
