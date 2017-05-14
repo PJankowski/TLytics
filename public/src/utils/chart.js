@@ -1,6 +1,6 @@
 import Chart from 'chart.js';
 
-const lineConfig = {
+const chartConfig = {
   global: {
     deafultFontColor: '#fff',
     defaultFontFamily: 'Roboto Mono',
@@ -29,12 +29,12 @@ const lineConfig = {
 };
 
 const lineData = {
-  labels: [],
-  datasets: [],
+  data: [],
+  label: '',
   fill: true,
   lineTension: 0.3,
-  backgroundColor: 'rgba(0, 0, 0, 0.3)',
-  borderColor: 'rgba(0, 0, 0, 0.8)',
+  backgroundColor: 'rgba(73, 190, 170, 0.3)',
+  borderColor: 'rgba(73, 190, 170, 0.8)',
   borderCapStyle: 'butt',
   borderDash: [],
   borderDashOffset: 0.0,
@@ -46,9 +46,14 @@ const lineData = {
   pointHoverBackgroundColor: 'rgba(75,192,192,1)',
   pointHoverBorderColor: 'rgba(220,220,220,1)',
   pointHoverBorderWidth: 2,
-  pointRadius: 0,
+  pointRadius: 4,
   pointHitRadius: 10,
   spanGaps: false,
+};
+
+const lineConfig = {
+  labels: [],
+  datasets: [],
 };
 
 class ChartClass {
@@ -58,13 +63,21 @@ class ChartClass {
     this.type = type;
   }
 
+  massageData() {
+    const { data } = this;
+    const dataObj = Object.assign({}, lineData, data.datasets[0]);
+    const datasets = lineConfig.datasets.concat(dataObj);
+    const labels = lineConfig.labels.concat(data.labels);
+    return { datasets, labels };
+  }
+
   create() {
-    const { el, data, type } = this;
-    const dataset = Object.assign({}, lineData, data);
+    const { el, type } = this;
+    const data = this.massageData();
     this.chart = new Chart(el, {
       type,
-      data: dataset,
-      options: lineConfig,
+      data,
+      options: chartConfig,
     });
   }
 

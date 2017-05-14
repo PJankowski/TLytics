@@ -18,10 +18,6 @@ class Dashboard extends Component {
           {
             label: 'My First dataset',
             data: [65, 59, 80, 81, 56, 55, 40],
-            backgroundColor: 'rgba(73, 190, 170, 0.3)',
-            borderColor: 'rgba(73, 190, 170, 0.8)',
-            pointBackgroundColor: '#fff',
-            pointRadius: 4,
           },
         ],
       },
