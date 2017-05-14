@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import express from 'express';
 import path from 'path';
 import mongoose from 'mongoose';
@@ -8,18 +9,15 @@ import session from 'express-session';
 import cookieParser from 'cookie-parser';
 import passport from 'passport';
 import cors from 'cors';
+import { db, sessionSecret, port } from './server/config';
+import passportSetup from './server/utils/passport';
+import routes from './server/routes';
 
 const app = express();
 
-/* eslint-disable import/first */
-import config from './server/config';
-import passportSetup from './server/utils/passport';
-import routes from './server/routes';
-/* eslint-enable import/first */
-
 mongoose.Promise = global.Promise;
 
-mongoose.connect(config.db, (err) => {
+mongoose.connect(db, (err) => {
   if (err) {
     console.log(err);
   } else {
@@ -38,7 +36,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(morgan('combined'));
 app.use(cookieParser());
 app.use(session({
-  secret: config.sessionSecret,
+  secret: sessionSecret,
   resave: false,
   saveUninitialized: false,
   store: SessionStore,
@@ -51,6 +49,6 @@ passportSetup();
 
 routes(app);
 
-app.listen(config.port, () => {
-  console.log(`Server started on port -> ${config.port}`);
+app.listen(port, () => {
+  console.log(`Server started on port -> ${port}`);
 });

@@ -2,11 +2,11 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import getUser from '../../actions/UserActions';
+import getDashboardData from '../../actions/DashboardActions';
 
 class Dashboard extends Component {
   componentDidMount() {
-    this.props.dispatch(this.props.getUser());
+    this.props.dispatch(this.props.getDashboardData());
   }
 
   render() {
@@ -14,7 +14,6 @@ class Dashboard extends Component {
     return (
       <div>
         <h1>Welcome { user.display_name }!</h1>
-        <div id="chart" />
       </div>
     );
   }
@@ -23,23 +22,24 @@ class Dashboard extends Component {
 Dashboard.propTypes = {
   user: PropTypes.object,
   dispatch: PropTypes.func,
-  getUser: PropTypes.func,
+  getDashboardData: PropTypes.func,
 };
 
 Dashboard.defaultProps = {
   user: {},
   dispatch: () => {},
-  getUser: () => {},
+  getDashboardData: () => {},
 };
 
 const mapStateToProps = (state) => {
   return {
     user: state.user,
+    channel: state.channel,
   };
 };
 
 const mapDispatchToProps = (dispatch) => {
-  return bindActionCreators({ getUser }, dispatch);
+  return bindActionCreators({ getDashboardData }, dispatch);
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Dashboard);

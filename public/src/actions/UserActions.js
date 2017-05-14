@@ -1,16 +1,17 @@
-import axios from 'axios';
+import api from '../utils/api';
 import Storage from '../utils/storage';
+import { USER_GET } from '../utils/constants';
 
 export default function getUser() {
   return (dispatch) => {
-    return axios.get('/user')
+    return api.getUser()
       .then((data) => {
         const { display_name, accessToken, refreshToken } = data.data;
         const storage = new Storage();
 
         storage.set('tlytics_token', refreshToken);
 
-        dispatch({ type: 'USER_LOGGED_IN',
+        dispatch({ type: USER_GET,
           payload: {
             display_name,
             accessToken,
