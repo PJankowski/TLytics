@@ -1,26 +1,35 @@
-import c3 from 'c3';
-import 'c3/c3.css';
+// import c3 from 'c3';
+import Chart from 'chart.js';
+// import 'c3/c3.css';
 
-class Chart {
-  constructor(el, columns, type) {
+class ChartClass {
+  constructor(el, data, type) {
     this.el = el;
-    this.columns = columns;
+    this.data = data;
     this.type = type;
   }
 
   create() {
-    const { el, columns, type } = this;
-    this.chart = c3.generate({
-      bindto: el,
-      data: {
-        columns,
-        type,
+    const { el, data, type } = this;
+    this.chart = new Chart(el, {
+      type,
+      data,
+      options: {
+        global: {
+          deafultFontColor: '#fff',
+          defaultFontFamily: 'Roboto Mono',
+          defaultFontSize: 16,
+          defaultFontStyle: 'normal',
+        },
+        legend: {
+          display: false,
+        },
       },
     });
   }
 
-  update(columns, type) {
-    this.columns = columns || this.columns;
+  update(data, type) {
+    this.data = data || this.data;
     this.type = type || this.type;
 
     this.create();
@@ -31,4 +40,4 @@ class Chart {
   }
 }
 
-export default Chart;
+export default ChartClass;
