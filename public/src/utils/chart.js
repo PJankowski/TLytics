@@ -1,6 +1,55 @@
-// import c3 from 'c3';
 import Chart from 'chart.js';
-// import 'c3/c3.css';
+
+const lineConfig = {
+  global: {
+    deafultFontColor: '#fff',
+    defaultFontFamily: 'Roboto Mono',
+    defaultFontSize: 16,
+    defaultFontStyle: 'normal',
+  },
+  legend: {
+    display: false,
+  },
+  scales: {
+    yAxes: [
+      {
+        ticks: {
+          fontColor: '#fff',
+        },
+      },
+    ],
+    xAxes: [
+      {
+        ticks: {
+          fontColor: '#fff',
+        },
+      },
+    ],
+  },
+};
+
+const lineData = {
+  labels: [],
+  datasets: [],
+  fill: true,
+  lineTension: 0.3,
+  backgroundColor: 'rgba(0, 0, 0, 0.3)',
+  borderColor: 'rgba(0, 0, 0, 0.8)',
+  borderCapStyle: 'butt',
+  borderDash: [],
+  borderDashOffset: 0.0,
+  borderJoinStyle: 'miter',
+  pointBorderColor: '#fff',
+  pointBackgroundColor: '#fff',
+  pointBorderWidth: 1,
+  pointHoverRadius: 5,
+  pointHoverBackgroundColor: 'rgba(75,192,192,1)',
+  pointHoverBorderColor: 'rgba(220,220,220,1)',
+  pointHoverBorderWidth: 2,
+  pointRadius: 0,
+  pointHitRadius: 10,
+  spanGaps: false,
+};
 
 class ChartClass {
   constructor(el, data, type) {
@@ -11,20 +60,11 @@ class ChartClass {
 
   create() {
     const { el, data, type } = this;
+    const dataset = Object.assign({}, lineData, data);
     this.chart = new Chart(el, {
       type,
-      data,
-      options: {
-        global: {
-          deafultFontColor: '#fff',
-          defaultFontFamily: 'Roboto Mono',
-          defaultFontSize: 16,
-          defaultFontStyle: 'normal',
-        },
-        legend: {
-          display: false,
-        },
-      },
+      data: dataset,
+      options: lineConfig,
     });
   }
 
