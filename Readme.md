@@ -4,7 +4,7 @@
 * Create smaller components (form, input) ✔︎
 * Rename Error to Toast ✔︎
 * Style Toasts out better
-* Create navigatin bar
+* Create navigation bar
 
 ### Changelog:
 * Added OAuth
