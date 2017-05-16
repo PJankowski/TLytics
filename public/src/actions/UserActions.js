@@ -1,5 +1,5 @@
-import Storage from '../utils/storage';
-import { USER_GET } from '../utils/constants';
+import Storage from 'Utility/storage';
+import { USER_GET } from 'Utility/constants';
 
 export default function getUser() {
   return (dispatch, _, api) => {

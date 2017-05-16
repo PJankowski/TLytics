@@ -19,7 +19,9 @@
     "react/forbid-prop-types": 0,
     "global-require": 0,
     "no-param-reassign": ["error", { "props": false }],
-    "jsx-a11y/img-has-alt": "off"
+    "jsx-a11y/img-has-alt": "off",
+    "import/no-unresolved": 0,
+    "import/no-extraneous-dependencies": 0
   },
   "extends": "airbnb"
 }

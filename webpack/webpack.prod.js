@@ -54,6 +54,8 @@ module.exports = {
     alias: {
       Containers: path.join(__dirname, '../public/src/containers'),
       Components: path.join(__dirname, '../public/src/components'),
+      HOC: path.join(__dirname, '../public/src/HOC'),
+      Utility: path.join(__dirname, '../public/src/utils'),
     },
   },
   plugins: [

@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { USER_URL_GET, CHANNEL_URL_GET } from '../utils/constants';
+import { USER_URL_GET, CHANNEL_URL_GET } from 'Utility/constants';
 
 const api = {};
 

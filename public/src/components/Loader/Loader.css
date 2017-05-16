@@ -1,0 +1,55 @@
+.Loader {
+  display: flex;
+  width: 15%;
+  margin: 0 auto;
+  height: 100%;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.Loader__indicator {
+  background-color: #49BEAA;
+  height: 10px;
+  width: 10px;
+  border-radius: 50%;
+  animation: bounce 0.8s ease-in-out infinite;
+}
+
+.Loader__indicator--second,
+.Loader__indicator--fourth {
+  height: 13px;
+  width: 13px;
+}
+
+.Loader__indicator--third {
+  height: 16px;
+  width: 16px;
+}
+
+.Loader__indicator--second {
+  animation-delay: 0.1s;
+}
+
+.Loader__indicator--third {
+  animation-delay: 0.2s;
+}
+
+.Loader__indicator--fourth {
+  animation-delay: 0.3s;
+}
+
+.Loader__indicator--fifth {
+  animation-delay: 0.4s;
+}
+
+@keyframes bounce {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-100px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}

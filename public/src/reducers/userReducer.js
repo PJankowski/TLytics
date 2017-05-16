@@ -1,4 +1,4 @@
-import { USER_GET } from '../utils/constants';
+import { USER_GET } from 'Utility/constants';
 
 export default function user(state = {
   display_name: '',

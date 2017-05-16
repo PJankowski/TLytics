@@ -1,52 +1,21 @@
-import React, { Component } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
-import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import getDashboardData from '../../actions/DashboardActions';
-import Chart from '../../utils/chart';
+
+import LoaderHOC from 'HOC/Loader';
 
 import './Dashboard.css';
 
-class Dashboard extends Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      chartData: {
-        labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
-        datasets: [
-          {
-            label: 'My First dataset',
-            data: [65, 59, 80, 81, 56, 55, 40],
-          },
-        ],
-      },
-      type: 'line',
-    };
-  }
-
-  componentDidMount() {
-    this.props.dispatch(this.props.getDashboardData());
-
-    const chart = new Chart('chart', this.state.chartData, this.state.type);
-    chart.create();
-  }
-
-  render() {
-    const { user } = this.props;
-    return (
-      <div>
-        <h1>Welcome { user.display_name }!</h1>
-        <canvas id="chart" height="832" width="2084" />
-      </div>
-    );
-  }
+function Dashboard({ user }) {
+  return (
+    <div>
+      <h1>Welcome { user.display_name }!</h1>
+    </div>
+  );
 }
 
 Dashboard.propTypes = {
   user: PropTypes.object,
-  dispatch: PropTypes.func,
-  getDashboardData: PropTypes.func,
 };
 
 Dashboard.defaultProps = {
@@ -62,8 +31,4 @@ const mapStateToProps = (state) => {
   };
 };
 
-const mapDispatchToProps = (dispatch) => {
-  return bindActionCreators({ getDashboardData }, dispatch);
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(Dashboard);
+export default connect(mapStateToProps)(LoaderHOC(Dashboard));

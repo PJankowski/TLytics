@@ -1,4 +1,4 @@
-import { CHANNEL_GET } from '../utils/constants';
+import { CHANNEL_GET } from 'Utility/constants';
 
 export default function user(state = {
   status: '',
