@@ -3,9 +3,10 @@ import PropTypes from 'prop-types';
 import { Route } from 'react-router';
 import { connect } from 'react-redux';
 
-import Toast from '../../components/Toast';
-
 import Dashboard from '../Dashboard';
+import Navbar from '../Navbar';
+
+import Toast from '../../components/Toast';
 
 import './App.css';
 
@@ -13,6 +14,7 @@ function App({ toast }) {
   return (
     <div className="App">
       { toast.active ? <Toast /> : null }
+      <Navbar />
       <Route path="/dashboard" component={Dashboard} />
     </div>
   );

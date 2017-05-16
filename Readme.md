@@ -4,12 +4,13 @@
 * Create smaller components (form, input) ✔︎
 * Rename Error to Toast ✔︎
 * Style Toasts out better
-* Create navigation bar
+* Create navigation bar ︎︎︎︎︎︎︎︎︎︎︎︎︎✔︎
 
 ### Changelog:
 * Added OAuth
 * Created Charts class
 * Changed Error to Toast for more general usage
+* Created rough draft of Navbar
 
 #### NPM Scripts:
 ```json

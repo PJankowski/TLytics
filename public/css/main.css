@@ -11,6 +11,6 @@ body {
 h1,
 h2,
 h3 {
-  font-family: "Crimson Text", Georgia, serif;
+  font-family: "Roboto Mono", monospace;
   letter-spacing: 1px;
 }

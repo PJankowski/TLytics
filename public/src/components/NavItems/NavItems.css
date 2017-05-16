@@ -1,0 +1,17 @@
+.NavItems {
+  width: 14%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.NavItems a {
+  color: #fff;
+  text-decoration: none;
+  opacity: 0.9;
+  font-size: 0.9em;
+}
+
+.NavItems a:hover {
+  opacity: 1;
+}
