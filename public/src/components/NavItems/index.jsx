@@ -1,6 +1,6 @@
 import React from 'react';
 
-import NavItem from '../NavItem';
+import NavItem from 'Components/NavItem';
 
 import './NavItems.css';
 

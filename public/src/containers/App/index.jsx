@@ -3,10 +3,10 @@ import PropTypes from 'prop-types';
 import { Route } from 'react-router';
 import { connect } from 'react-redux';
 
-import Dashboard from '../Dashboard';
-import Navbar from '../Navbar';
+import Dashboard from 'Containers/Dashboard';
+import Navbar from 'Containers/Navbar';
 
-import Toast from '../../components/Toast';
+import Toast from 'Components/Toast';
 
 import './App.css';
 

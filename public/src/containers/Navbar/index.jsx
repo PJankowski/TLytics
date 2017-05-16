@@ -2,10 +2,10 @@ import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
-import Container from '../Container';
+import Container from 'Containers/Container';
 
-import Logo from '../../components/Logo';
-import NavItems from '../../components/NavItems';
+import Logo from 'Components/Logo';
+import NavItems from 'Components/NavItems';
 
 import './Navbar.css';
 

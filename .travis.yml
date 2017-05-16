@@ -1,0 +1,11 @@
+language: node_js
+node_js:
+- '0.11'
+deploy:
+  provider: heroku
+  api_key:
+    secure: FAOparGbMDw6efHYIu8FwVBhaRguh5jpefrpUp6Bn9In8bXUsqYvpj8k9f4XudK0TK7sx9UzbVoAPf2xKnHTwwEtwxhO+y369kmpLgPi6A1wPdoTyV8x2A0hJr9yURGaNsKGpIuti6isxZwzltOKnl+7G3QKOCfpDZMqNDvANnAh/Ys6ULrPWPQHEHRRpcweXCen+3WIrVr6YkaLrUZumd6sWS5jSY19s4snjIR2OV4k/4YqOwPz4F5FuiigwUTdBPDShzYkImu92hLYrJuOIBbt4/eFuR1k8c0Mne20glFqMCP482Ntqc7Z5/vqez1TIUoVlIDZFJaETaBo/B4pqqz2JepN2yjoHBKmdP7vI/j2IybVhpDv0dWsnsFZXiPluODt7e6nNhfL9NSZGLOw6096AMNQRKpUUWX/rd7XaHZ1VPOE8l573lVqigQpiu9hCwdCS4rsMwzgoP3VlnsPdjWYHTMWuoeqRohpV8PPhWkw94ndeIRwpwkQhf0XBqCrH3cMsmNGK7xfz3GBWMP6wUak1HXGZrhmra6L5oRRVt464rQhbZKwH9Op+ti0LnlvdhGnOzXfCWrmNs+AqTyTWQXgeTlqBmDsas+8yPr4R0VbrYEdVQnG1X42+diuuJ9TBc0MpjzGw7n86YPQa5dbqhNpCUDgxQ7W8C0sYAAAs1o=
+  app: twitchanalytics
+  on:
+    repo: PJankowski/TLytics
+    branch: master

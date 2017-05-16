@@ -8,9 +8,10 @@
   },
   "scripts": {
     "watch": "nodemon server.js --ignore public/ --exec babel-node",
-    "assets": "webpack -w --display-max-modules 0",
+    "assets": "webpack --env=dev -w --display-max-modules 0 --profile --colors",
     "start": "concurrently 'npm run watch' 'npm run assets' --names '💻,📦' --prefix name",
-    "build": "webpack -p"
+    "build": "webpack --env=prod --profile --colors",
+    "postinstall": "npm run build"
   },
   "dependencies": {
     "autoprefixer": "^6.7.7",
