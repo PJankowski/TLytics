@@ -4,22 +4,24 @@ import { connect } from 'react-redux';
 
 import LoaderHOC from 'HOC/Loader';
 
+import DashboardHeader from 'Components/DashboardHeader';
+
 import './Dashboard.css';
 
-function Dashboard({ user }) {
+function Dashboard({ user, channel }) {
   return (
-    <div>
-      <h1>Welcome { user.display_name }!</h1>
-    </div>
+    <DashboardHeader user={user} channel={channel} />
   );
 }
 
 Dashboard.propTypes = {
   user: PropTypes.object,
+  channel: PropTypes.object,
 };
 
 Dashboard.defaultProps = {
   user: {},
+  channel: {},
   dispatch: () => {},
   getDashboardData: () => {},
 };

@@ -1,7 +1,7 @@
 import mongoose from 'mongoose';
 
 const UserSchema = mongoose.Schema({
-  user_id: 44322889,
+  twitch_id: Number,
   bio: String,
   created_at: Date,
   display_name: String,
@@ -17,6 +17,7 @@ const UserSchema = mongoose.Schema({
   twitter_connected: Boolean,
   type: String,
   updated_at: { type: Date, default: Date.now() },
+  accessToken: String,
 });
 
 const User = mongoose.model('User', UserSchema);

@@ -11,6 +11,7 @@
     "assets": "webpack --env=dev -w --display-max-modules 0 --profile --colors",
     "start": "concurrently 'npm run watch' 'npm run assets' --names '💻,📦' --prefix name",
     "build": "webpack --env=prod --profile --colors",
+    "lint:server": "eslint server.js server/**/*.js bin/*",
     "postinstall": "npm run build"
   },
   "dependencies": {

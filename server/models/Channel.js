@@ -1,6 +1,7 @@
 import mongoose from 'mongoose';
 
 const ChannelSchema = mongoose.Schema({
+  twitch_id: Number,
   mature: Boolean,
   status: String,
   broadcaster_language: { type: String, default: 'en' },
@@ -18,9 +19,8 @@ const ChannelSchema = mongoose.Schema({
   profile_banner_background_color: String,
   url: String,
   views: Number,
-  followers: Number,
+  followers: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Followers' }],
   broadcaster_type: String,
-  stream_key: String,
   email: String,
 });
 

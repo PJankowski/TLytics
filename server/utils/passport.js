@@ -1,5 +1,6 @@
 import Passport from 'passport';
 import passportOauth from 'passport-oauth';
+import User from '../models/User';
 
 import { twitchClient, twitchSecret, twitchCallbackUrl } from '../config';
 import twitchApi from '../utils/twitchApi';
@@ -37,7 +38,60 @@ export default function setup() {
     profile.accessToken = accessToken;
     profile.refreshToken = refreshToken;
 
-    done(null, profile);
+    const {
+      display_name,
+      bio,
+      type,
+      name,
+      logo,
+      created_at,
+      email,
+      partnered,
+    } = profile;
+
+    const promise = new Promise((resolve, reject) => {
+      User.findOne({ twitch_id: profile._id }, (err, user) => {
+        if (err) {
+          reject(err);
+        } else if (user) {
+          User.findOneAndUpdate({ twitch_id: profile._id }, { accessToken }, (updateError, doc) => {
+            if (updateError) {
+              reject(updateError);
+            } else {
+              resolve(doc);
+            }
+          });
+        } else {
+          const userObj = {
+            twitch_id: profile._id,
+            bio,
+            display_name,
+            type,
+            name,
+            logo,
+            created_at,
+            email,
+            partnered,
+            accessToken,
+          };
+          const newUser = new User(userObj);
+
+          newUser.save((newUserErr, createdUser) => {
+            if (newUserErr) {
+              reject(newUserErr);
+            } else {
+              resolve(createdUser);
+            }
+          });
+        }
+      });
+    });
+
+    promise.then((data) => {
+      done(null, data);
+    }, (err) => {
+      console.log(err);
+    });
   },
   ));
 }
