@@ -2,19 +2,6 @@ import twitchApi from '../utils/twitchApi';
 import Channel from '../models/Channel';
 import Followers from '../models/Followers';
 
-function getMaxFollowers(followers) {
-  return new Promise((resolve) => {
-    const maxFollowers = followers.reduce((total, follower) => {
-      if (follower.followers > total) {
-        return follower.followers;
-      }
-      return total;
-    }, 0);
-
-    resolve(maxFollowers);
-  });
-}
-
 export default function getChannel(req, res) {
   const { accessToken, twitch_id } = req.session.passport.user;
 
@@ -52,6 +39,7 @@ export default function getChannel(req, res) {
                 reject(error);
               } else {
                 channel.followers.push(doc);
+                channel.currentFollowers = doc.followers;
 
                 resolve(channel);
               }
@@ -89,6 +77,7 @@ export default function getChannel(req, res) {
                   if (err) {
                     reject(err);
                   } else {
+                    newChannelData.currentFollowers = doc.followers;
                     resolve(newChannelData);
                   }
                 });
@@ -103,11 +92,7 @@ export default function getChannel(req, res) {
   });
 
   promise.then((data) => {
-    getMaxFollowers(data.followers)
-      .then((maxFollowers) => {
-        data.maxFollowers = maxFollowers;
-        res.status(200).json(data);
-      });
+    res.status(200).json(data);
   }, (error) => {
     res.status(404).json(error);
   });

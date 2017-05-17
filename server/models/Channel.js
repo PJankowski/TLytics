@@ -20,7 +20,7 @@ const ChannelSchema = mongoose.Schema({
   url: String,
   views: Number,
   followers: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Followers' }],
-  maxFollowers: { type: Number, default: 0 },
+  currentFollowers: { type: Number, default: 0 },
   broadcaster_type: String,
   email: String,
 });

@@ -22,7 +22,7 @@ function DashboardHeader({ user, channel }) {
           <p>Total Views</p>
         </div>
         <div className="DashboardHeader__itemset">
-          <h3>{channel.maxFollowers}</h3>
+          <h3>{channel.currentFollowers}</h3>
           <p>Followers</p>
         </div>
         <div className="DashboardHeader__itemset">

@@ -12,7 +12,7 @@ export default function user(state = {
   url: '',
   views: 0,
   followers: [],
-  maxFollowers: 0,
+  currentFollowers: 0,
   broadcaster_type: '',
 }, action) {
   switch (action.type) {
@@ -29,7 +29,7 @@ export default function user(state = {
         url,
         views,
         followers,
-        maxFollowers,
+        currentFollowers,
         broadcaster_type,
       } = action.payload;
       return {
@@ -45,7 +45,7 @@ export default function user(state = {
         url,
         views,
         followers,
-        maxFollowers,
+        currentFollowers,
         broadcaster_type,
       };
     }
