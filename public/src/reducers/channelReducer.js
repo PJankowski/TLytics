@@ -11,7 +11,8 @@ export default function user(state = {
   profile_banner_background_color: '',
   url: '',
   views: 0,
-  followers: 0,
+  followers: [],
+  maxFollowers: 0,
   broadcaster_type: '',
 }, action) {
   switch (action.type) {
@@ -28,6 +29,7 @@ export default function user(state = {
         url,
         views,
         followers,
+        maxFollowers,
         broadcaster_type,
       } = action.payload;
       return {
@@ -43,6 +45,7 @@ export default function user(state = {
         url,
         views,
         followers,
+        maxFollowers,
         broadcaster_type,
       };
     }
