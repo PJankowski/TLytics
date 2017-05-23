@@ -17,6 +17,7 @@ export default function getChannel() {
         views,
         followers,
         currentFollowers,
+        chartFollowers,
         broadcaster_type,
       } = data.data;
 
@@ -34,6 +35,7 @@ export default function getChannel() {
             views,
             followers,
             currentFollowers,
+            chartFollowers,
             broadcaster_type,
           },
         });

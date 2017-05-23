@@ -1,6 +1,35 @@
+import moment from 'moment';
 import twitchApi from '../utils/twitchApi';
 import Channel from '../models/Channel';
 import Followers from '../models/Followers';
+
+function getDatesArray(followers) {
+  return followers.reduce((arr, follower) => {
+    const date = moment(follower.date).format('MM-DD-YYYY');
+    if (!arr.includes(date)) {
+      arr.push(date);
+    }
+
+    return arr;
+  }, []);
+}
+
+function getFollowersChartData(followers) {
+  const dates = getDatesArray(followers);
+
+  return followers.reduce((arr, follower) => {
+    const date = moment(follower.date).format('MM-DD-YYYY');
+    const inArr = arr.some((value) => {
+      return moment(date).isSame(moment(value.date).format('MM-DD-YYYY'));
+    });
+
+    if (dates.includes(date) && !inArr) {
+      arr.push(follower);
+    }
+
+    return arr;
+  }, []);
+}
 
 export default function getChannel(req, res) {
   const { accessToken, twitch_id } = req.session.passport.user;
@@ -41,6 +70,8 @@ export default function getChannel(req, res) {
                 channel.followers.push(doc);
                 channel.currentFollowers = doc.followers;
 
+                channel.chartFollowers = getFollowersChartData(channel.followers);
+
                 resolve(channel);
               }
             });
@@ -78,6 +109,7 @@ export default function getChannel(req, res) {
                     reject(err);
                   } else {
                     newChannelData.currentFollowers = doc.followers;
+                    newChannelData.chartFollowers = getFollowersChartData(channel.followers);
                     resolve(newChannelData);
                   }
                 });

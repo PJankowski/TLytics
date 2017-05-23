@@ -13,6 +13,7 @@ export default function user(state = {
   views: 0,
   followers: [],
   currentFollowers: 0,
+  chartFollowers: [],
   broadcaster_type: '',
 }, action) {
   switch (action.type) {
@@ -30,6 +31,7 @@ export default function user(state = {
         views,
         followers,
         currentFollowers,
+        chartFollowers,
         broadcaster_type,
       } = action.payload;
       return {
@@ -46,6 +48,7 @@ export default function user(state = {
         views,
         followers,
         currentFollowers,
+        chartFollowers,
         broadcaster_type,
       };
     }

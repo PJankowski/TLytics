@@ -21,6 +21,7 @@ const ChannelSchema = mongoose.Schema({
   views: Number,
   followers: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Followers' }],
   currentFollowers: { type: Number, default: 0 },
+  chartFollowers: [],
   broadcaster_type: String,
   email: String,
 });
